@@ -5,7 +5,12 @@ import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
 
-import { Container, Section } from 'components';
+import {
+  Container,
+  Heading,
+  Section,
+  SubHeading,
+} from 'components';
 
 class App extends Component {
   constructor(props) {
@@ -62,10 +67,10 @@ class App extends Component {
     return (
       <Section>
         <Container>
-          <h1>Phonebook</h1>
+          <Heading>Phonebook</Heading>
           <ContactForm onAddContact={this.handleAddContact} />
 
-          <h2>Contacts</h2>
+          <SubHeading>Contacts</SubHeading>
           <Filter value={filter} onChange={this.handleFilterChange} />
           <ContactList
             contacts={filteredContacts}

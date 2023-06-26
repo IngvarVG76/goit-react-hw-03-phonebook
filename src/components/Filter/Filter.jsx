@@ -1,15 +1,17 @@
+import {FilterSection, FilterLabel, FilterInput} from './Filter.styled'
+
 const Filter = ({ value, onChange }) => {
   return (
-    <div>
-      <label htmlFor="filter">Find contacts by name</label>
-      <input
+    <FilterSection>
+      <FilterLabel htmlFor="filter">Find contacts by name</FilterLabel>
+      <FilterInput
         type="text"
         name="filter"
         placeholder="Search"
         value={value}
         onChange={onChange}
       />
-    </div>
+    </FilterSection>
   );
 };
 

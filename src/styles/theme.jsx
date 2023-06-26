@@ -13,7 +13,8 @@ export const theme = Object.freeze({
     medium: '18px',
     large: '22px',
   },
-  FontWeight : {
+  FontWeight: {
+    light: "200",
     regular: '400',
     medium: '600',
     bold: '800',
