@@ -1,4 +1,5 @@
-import {FilterSection, FilterLabel, FilterInput} from './Filter.styled'
+import PropTypes from 'prop-types';
+import { FilterSection, FilterLabel, FilterInput } from './Filter.styled';
 
 const Filter = ({ value, onChange }) => {
   return (
@@ -13,6 +14,11 @@ const Filter = ({ value, onChange }) => {
       />
     </FilterSection>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Filter;

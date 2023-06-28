@@ -1,28 +1,20 @@
-// import React, { useState } from 'react'; // Solutions with React hooks
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Form, FormLabel, FormInput, FormBtn } from './ContactForm.styled';
 
 class ContactForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      number: '',
-    };
-  }
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
+  state = {
+    name: '',
+    number: '',
   };
 
-  handleNumberChange = event => {
-    this.setState({ number: event.target.value });
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const { name, number } = this.state;
-    this.props.onAddContact(name, number);
+    this.props.onAddContact(this.state);
     this.setState({ name: '', number: '' });
   };
 
@@ -39,7 +31,7 @@ class ContactForm extends Component {
           placeholder="Enter name"
           required
           value={name}
-          onChange={this.handleNameChange}
+          onChange={this.handleChange}
         />
 
         <FormLabel htmlFor="number">Number:</FormLabel>
@@ -50,7 +42,7 @@ class ContactForm extends Component {
           placeholder="Enter number"
           required
           value={number}
-          onChange={this.handleNumberChange}
+          onChange={this.handleChange}
         />
 
         <FormBtn type="submit">Add Contact</FormBtn>
@@ -59,53 +51,8 @@ class ContactForm extends Component {
   }
 }
 
-// Solutions with React hooks
-// const ContactForm = ({ onAddContact }) => {
-//   const [name, setName] = useState('');
-//   const [number, setNumber] = useState('');
-
-//   const handleNameChange = event => {
-//     setName(event.target.value);
-//   };
-
-//   const handleNumberChange = event => {
-//     setNumber(event.target.value);
-//   };
-
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     onAddContact(name, number);
-//     setName('');
-//     setNumber('');
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label htmlFor="name">Name:</label>
-//       <input
-//         type="text"
-//         id="name"
-//         name="name"
-//         placeholder="Enter name"
-//         required
-//         value={name}
-//         onChange={handleNameChange}
-//       />
-
-//       <label htmlFor="number">Number:</label>
-//       <input
-//         type="tel"
-//         id="number"
-//         name="number"
-//         placeholder="Enter number"
-//         required
-//         value={number}
-//         onChange={handleNumberChange}
-//       />
-
-//       <button type="submit">Add Contact</button>
-//     </form>
-//   );
-// };
+ContactForm.propTypes = {
+  onAddContact: PropTypes.func.isRequired,
+};
 
 export default ContactForm;
